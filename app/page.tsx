@@ -3,10 +3,18 @@
 import React, { useState } from 'react';
 import { Calculator, CheckCircle, XCircle, Download, Lightbulb, Award, BookOpen, Target, AlertCircle, Brain, History } from 'lucide-react';
 
+type CalculationResult = {
+  circumference: string;
+  radius: string;
+  diameter: string;
+  area: string;
+  steps: string[];
+};
+
 export default function CircumferenceFormulaPage() {
   const [inputType, setInputType] = useState('radius');
   const [inputValue, setInputValue] = useState('');
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<CalculationResult | null>(null);
   
   // Quiz state
   const [quizStarted, setQuizStarted] = useState(false);
