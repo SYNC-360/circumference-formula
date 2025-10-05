@@ -202,13 +202,12 @@ Formula 3: Using Area - C = √(4πA)
               <div className="mb-6">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Enter Value:</label>
                 <input
-                  type="number"
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  placeholder={`Enter ${inputType}...`}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none text-lg"
-                />
-              </div>
+  type="number"
+  value={inputValue}
+  onChange={(e) => setInputValue(e.target.value)}
+  placeholder={`Enter ${inputType}...`}
+  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none text-lg placeholder-gray-700"  // Add placeholder-gray-700
+/>
 
               <button
                 onClick={calculateCircumference}
@@ -246,11 +245,13 @@ Formula 3: Using Area - C = √(4πA)
                   <div className="mt-6 p-4 bg-white rounded-lg border border-gray-200">
                     <h4 className="font-bold text-gray-900 mb-3">Step-by-Step Solution:</h4>
                     <div className="space-y-2">
-                      {result.steps.map((step, idx) => (
-                        <div key={idx} className="flex items-start gap-2">
-                          <span className="text-indigo-600 font-bold">{idx + 1}.</span>
-                          <span className="text-gray-700">{step}</span>
-                        </div>
+  {result.steps.map((step, idx) => (
+    <div key={idx} className="flex items-start gap-2">
+      <span className="text-indigo-600 font-bold">{idx + 1}.</span>
+      <span className="text-gray-900">{step}</span>  {/* Change to text-gray-900 */}
+    </div>
+  ))}
+</div>
                       ))}
                     </div>
                   </div>
@@ -532,12 +533,12 @@ Formula 3: Using Area - C = √(4πA)
                 <p className="text-gray-700 font-semibold mb-4">{example.problem}</p>
                 <div className="bg-white rounded-lg p-4">
                   <div className="space-y-2">
-                    {example.steps.map((step, stepIdx) => (
-                      <div key={stepIdx} className="flex gap-3">
-                        <span className={`font-bold text-${example.color}-600`}>Step {stepIdx + 1}:</span>
-                        <span className="text-gray-700">{step}</span>
-                      </div>
-                    ))}
+                  {example.steps.map((step, stepIdx) => (
+  <div key={stepIdx} className="flex gap-3">
+    <span className={`font-bold text-${example.color}-600`}>Step {stepIdx + 1}:</span>
+    <span className="text-gray-900">{step}</span>  {/* Change from text-gray-700 to text-gray-900 */}
+  </div>
+))}
                   </div>
                   <div className={`mt-4 bg-${example.color}-50 p-3 rounded-lg border-l-4 border-${example.color}-600`}>
                     <span className="font-bold text-gray-900">Answer: </span>
