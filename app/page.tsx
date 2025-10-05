@@ -252,7 +252,6 @@ Formula 3: Using Area - C = √(4πA)
     </div>
   ))}
 </div>
-                      ))}
                     </div>
                   </div>
                 </div>
