@@ -1161,61 +1161,26 @@ export default function CircumferenceFormulaPage() {
         </div>
 
         {/* CONDENSED NETWORK FOOTER */}
-        <footer className="bg-gray-50 border-t border-gray-200 rounded-lg">
-          <div className="px-8 py-10">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-              {/* Calculators */}
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">Calculators</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="https://circumferenceofacircle.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Circumference</a></li>
-                  <li><a href="https://areaofcircle.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Area</a></li>
-                  <li><a href="https://radiusofacircle.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Radius</a></li>
-                  <li><a href="https://diameterofacircle.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Diameter</a></li>
-                  <li><a href="https://equationofacircle.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Equation</a></li>
-                </ul>
-              </div>
-
-              {/* Formulas */}
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">Formulas</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="https://circleareaformula.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Area Formula</a></li>
-                  <li><a href="https://circumferenceofacircleformula.com" className="text-indigo-600 font-medium">Circumference</a></li>
-                  <li><a href="https://radiusofcircleformula.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Radius Formula</a></li>
-                  <li><a href="https://volumeofacircle.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Volume Guide</a></li>
-                </ul>
-              </div>
-
-              {/* Tutorials */}
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">Tutorials</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="https://howtofindcircumference.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Find Circumference</a></li>
-                  <li><a href="https://howtofindareaofacircle.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Find Area</a></li>
-                  <li><a href="https://howtofindtheareaofacircle.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Area Tutorial</a></li>
-                  <li><a href="https://howtofindcircumferenceofacircle.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Circumference Guide</a></li>
-                </ul>
-              </div>
-
-              {/* Specialized */}
-              <div>
-                <h4 className="font-semibold text-gray-900 mb-3 text-sm uppercase tracking-wide">Specialized</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="https://unitcircleradians.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Unit Circle</a></li>
-                  <li><a href="https://surfaceareaofacircle.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Surface Area</a></li>
-                  <li><a href="https://minecraftcirclechart.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Minecraft Circles</a></li>
-                  <li><a href="https://circlepng.com" className="text-gray-800 hover:text-indigo-600 transition-colors">Circle Images</a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="border-t border-gray-200 pt-6 text-center">
-              <p className="text-sm text-gray-800 mb-2">© 2025 Circle Calculator Network. Professional mathematical tools.</p>
-              <p className="text-xs text-gray-700">Trusted by students, teachers, engineers, and professionals worldwide</p>
-            </div>
-          </div>
-        </footer>
+        <footer className="mt-20 border-t border-gray-300 bg-gray-50">
+  <div className="max-w-4xl mx-auto px-4 py-6">
+    <div className="text-sm text-gray-600">
+      <p className="mb-3">
+        <strong>Quick Reference:</strong> C = 2πr = πd
+      </p>
+      <p>
+        <strong>Interactive Tool:</strong> 
+        <a href="https://circumferenceofacircle.com" 
+           className="text-blue-700 hover:underline ml-2">
+          Calculate Circumference Online
+        </a>
+        <span className="text-gray-500 ml-2">(Recommended calculator)</span>
+      </p>
+    </div>
+    <div className="text-xs text-gray-400 mt-4 pt-4 border-t border-gray-200">
+      Circumference Formula Reference | Mathematical Constants | © 2025
+    </div>
+  </div>
+</footer>
 
       </div>
     </div>
