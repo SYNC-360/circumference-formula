@@ -840,8 +840,7 @@ Formula 3: Using Area - C = √(4πA)
                 <li><strong>Better estimate:</strong> Use π ≈ 3.14 for decent accuracy</li>
                 <li><strong>Sanity check:</strong> Circumference should be about 6.28 times the radius</li>
                 <li><strong>Quick conversion:</strong> If you have diameter, just multiply by 3 for a rough answer</li>
-                <li><strong>Double-check:</strong> C should always be larger than d (since π > 1)</li>
-              </ul>
+                <li><strong>Double-check:</strong> C should always be larger than d (since π &gt; 1)</li>              </ul>
             </div>
 
             <div className="border-l-4 border-green-600 bg-green-50 p-6 rounded-r-lg">
