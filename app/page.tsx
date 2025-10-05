@@ -118,25 +118,105 @@ export default function CircumferenceFormulaPage() {
     setSelectedAnswer(null);
   };
 
-  const downloadPDF = () => {
-    const pdfContent = `CIRCUMFERENCE OF A CIRCLE FORMULA - Complete Study Guide
-
-TABLE OF CONTENTS
-1. The Three Main Formulas
-2. Quick Reference Chart
-3. Step-by-Step Examples
-4. Practice Problems (with Answer Key)
-5. Unit Conversion Table
-6. Memory Tricks & Tips
-7. Common Mistakes to Avoid
-
-SECTION 1: THE THREE MAIN FORMULAS
-
-Formula 1: Using Radius - C = 2πr
-Formula 2: Using Diameter - C = πd
-Formula 3: Using Area - C = √(4πA)
-
-[Full PDF content continues...]`;
+  const downloadPDF = async () => {
+    // Create a proper HTML document with styling
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Circumference of a Circle Formula - Complete Guide</title>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+          h1 { color: #4F46E5; border-bottom: 2px solid #4F46E5; padding-bottom: 10px; }
+          h2 { color: #6366F1; margin-top: 30px; }
+          .formula { background: #F0F4FF; padding: 15px; border-radius: 8px; margin: 20px 0; font-size: 18px; font-weight: bold; }
+          .example { background: #F9FAFB; padding: 15px; border-left: 4px solid #6366F1; margin: 20px 0; }
+          .tip { background: #FEF3C7; padding: 15px; border-radius: 8px; margin: 20px 0; }
+          table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+          th, td { border: 1px solid #E5E7EB; padding: 12px; text-align: left; }
+          th { background: #4F46E5; color: white; }
+          tr:nth-child(even) { background: #F9FAFB; }
+        </style>
+      </head>
+      <body>
+        <h1>CIRCUMFERENCE OF A CIRCLE FORMULA</h1>
+        <h2>Complete Study Guide</h2>
+        
+        <h2>📐 The Three Main Formulas</h2>
+        <div class="formula">1. Using Radius: C = 2πr</div>
+        <div class="formula">2. Using Diameter: C = πd</div>
+        <div class="formula">3. Using Area: C = √(4πA)</div>
+        
+        <h2>📊 Quick Reference Chart</h2>
+        <table>
+          <tr><th>If You Know</th><th>Use Formula</th><th>Example</th></tr>
+          <tr><td>Radius (r)</td><td>C = 2πr</td><td>r = 5 → C = 31.42</td></tr>
+          <tr><td>Diameter (d)</td><td>C = πd</td><td>d = 10 → C = 31.42</td></tr>
+          <tr><td>Area (A)</td><td>C = √(4πA)</td><td>A = 78.5 → C = 31.42</td></tr>
+        </table>
+        
+        <h2>💡 Memory Tricks</h2>
+        <div class="tip">
+          • "2 Pirates Race" = 2πr<br>
+          • "Pie Diameter" = πd<br>
+          • Remember: Circumference is LINEAR (2πr), Area is SQUARED (πr²)
+        </div>
+        
+        <h2>📝 Practice Problems</h2>
+        <div class="example">
+          <strong>Easy:</strong><br>
+          1. Find C when r = 3 cm<br>
+          2. Find C when d = 8 cm<br>
+          3. Find C when r = 10 m<br>
+          <br>
+          <strong>Answers:</strong> 18.85 cm, 25.13 cm, 62.83 m
+        </div>
+        
+        <div class="example">
+          <strong>Medium:</strong><br>
+          1. Find C when A = 50 cm²<br>
+          2. Wheel with r = 35 cm, distance in one rotation?<br>
+          3. Track with C = 400 m, find diameter<br>
+          <br>
+          <strong>Answers:</strong> 25.07 cm, 219.91 cm, 127.32 m
+        </div>
+        
+        <h2>⚠️ Common Mistakes to Avoid</h2>
+        <ul>
+          <li>Confusing radius and diameter (remember: d = 2r)</li>
+          <li>Forgetting the "2" in 2πr</li>
+          <li>Using π = 3 instead of 3.14159</li>
+          <li>Mixing up area and circumference formulas</li>
+        </ul>
+        
+        <h2>📏 Unit Conversion Table</h2>
+        <table>
+          <tr><th>From</th><th>To</th><th>Multiply By</th></tr>
+          <tr><td>cm</td><td>m</td><td>0.01</td></tr>
+          <tr><td>m</td><td>km</td><td>0.001</td></tr>
+          <tr><td>inches</td><td>feet</td><td>0.0833</td></tr>
+          <tr><td>feet</td><td>yards</td><td>0.333</td></tr>
+        </table>
+        
+        <p style="margin-top: 40px; text-align: center; color: #6B7280;">
+          © 2025 CircumferenceOfACircleFormula.com - Free Educational Resource
+        </p>
+      </body>
+      </html>
+    `;
+  
+    // Create blob and download
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Circumference-Formula-Complete-Guide.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  };
     
     const blob = new Blob([pdfContent], { type: 'text/plain' });
     const url = window.URL.createObjectURL(blob);
@@ -679,23 +759,23 @@ Formula 3: Using Area - C = √(4πA)
                 <div className="space-y-3">
                   {quizQuestions[currentQuestion].options.map((option, idx) => (
                     <button
-                      key={idx}
-                      onClick={() => handleQuizAnswer(idx)}
-                      disabled={selectedAnswer !== null}
-                      className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
-                        selectedAnswer === null
-                          ? 'border-gray-300 hover:border-indigo-400 bg-white'
-                          : selectedAnswer === idx
-                          ? idx === quizQuestions[currentQuestion].correct
-                            ? 'border-green-500 bg-green-50'
-                            : 'border-red-500 bg-red-50'
-                          : idx === quizQuestions[currentQuestion].correct
-                          ? 'border-green-500 bg-green-50'
-                          : 'border-gray-300 bg-white opacity-50'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="font-semibold">{option}</span>
+                    key={idx}
+                    onClick={() => handleQuizAnswer(idx)}
+                    disabled={selectedAnswer !== null}
+                    className={`w-full p-4 rounded-lg border-2 text-left transition-all ${
+                      selectedAnswer === null
+                        ? 'border-gray-300 hover:border-indigo-400 bg-white text-gray-900 font-medium'  // Added text-gray-900 font-medium
+                        : selectedAnswer === idx
+                        ? idx === quizQuestions[currentQuestion].correct
+                          ? 'border-green-500 bg-green-50 text-gray-900'  // Added text-gray-900
+                          : 'border-red-500 bg-red-50 text-gray-900'  // Added text-gray-900
+                        : idx === quizQuestions[currentQuestion].correct
+                        ? 'border-green-500 bg-green-50 text-gray-900'  // Added text-gray-900
+                        : 'border-gray-300 bg-white opacity-50 text-gray-700'  // Changed to text-gray-700
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-gray-900">{option}</span>  {/* Added text-gray-900 */}
                         {selectedAnswer !== null && (
                           idx === quizQuestions[currentQuestion].correct ? (
                             <CheckCircle className="text-green-600" size={24} />
