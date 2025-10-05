@@ -94,7 +94,7 @@ export default function CircumferenceFormulaPage() {
     });
   };
 
-  const handleQuizAnswer = (answerIndex) => {
+  const handleQuizAnswer = (answerIndex: number) => {
     setSelectedAnswer(answerIndex);
     if (answerIndex === quizQuestions[currentQuestion].correct) {
       setScore(score + 1);
