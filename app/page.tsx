@@ -248,10 +248,9 @@ Formula 3: Using Area - C = √(4πA)
   {result.steps.map((step, idx) => (
     <div key={idx} className="flex items-start gap-2">
       <span className="text-indigo-600 font-bold">{idx + 1}.</span>
-      <span className="text-gray-900">{step}</span>  {/* Change to text-gray-900 */}
+      <span className="text-gray-900">{step}</span>
     </div>
   ))}
-</div>
                     </div>
                   </div>
                 </div>
