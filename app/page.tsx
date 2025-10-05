@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { Calculator, CheckCircle, XCircle, Download, Lightbulb, Award, Target, AlertCircle, Brain, History } from 'lucide-react';
 
-// ADD THIS TYPE DEFINITION
 type CalculationResult = {
   circumference: string;
   radius: string;
@@ -15,14 +14,15 @@ type CalculationResult = {
 export default function CircumferenceFormulaPage() {
   const [inputType, setInputType] = useState('radius');
   const [inputValue, setInputValue] = useState('');
-  const [result, setResult] = useState<CalculationResult | null>(null);  // UPDATE THIS LINE
+  const [result, setResult] = useState<CalculationResult | null>(null);
   
   // Quiz state
   const [quizStarted, setQuizStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);  // ALREADY TYPED
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+
   const quizQuestions = [
     { question: "What is the formula for circumference using radius?", options: ["C = πr", "C = 2πr", "C = πr²", "C = 2r"], correct: 1 },
     { question: "If a circle has a diameter of 10 cm, what is its circumference? (use π ≈ 3.14)", options: ["31.4 cm", "62.8 cm", "15.7 cm", "20 cm"], correct: 0 },
@@ -119,30 +119,96 @@ export default function CircumferenceFormulaPage() {
   };
 
   const downloadPDF = () => {
-    const pdfContent = `CIRCUMFERENCE OF A CIRCLE FORMULA - Complete Study Guide
-
-TABLE OF CONTENTS
-1. The Three Main Formulas
-2. Quick Reference Chart
-3. Step-by-Step Examples
-4. Practice Problems (with Answer Key)
-5. Unit Conversion Table
-6. Memory Tricks & Tips
-7. Common Mistakes to Avoid
-
-SECTION 1: THE THREE MAIN FORMULAS
-
-Formula 1: Using Radius - C = 2πr
-Formula 2: Using Diameter - C = πd
-Formula 3: Using Area - C = √(4πA)
-
-[Full PDF content continues...]`;
+    const htmlContent = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Circumference of a Circle Formula - Complete Guide</title>
+      <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; }
+        h1 { color: #4F46E5; border-bottom: 2px solid #4F46E5; padding-bottom: 10px; }
+        h2 { color: #6366F1; margin-top: 30px; }
+        .formula { background: #F0F4FF; padding: 15px; border-radius: 8px; margin: 20px 0; font-size: 18px; font-weight: bold; }
+        .example { background: #F9FAFB; padding: 15px; border-left: 4px solid #6366F1; margin: 20px 0; }
+        .tip { background: #FEF3C7; padding: 15px; border-radius: 8px; margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #E5E7EB; padding: 12px; text-align: left; }
+        th { background: #4F46E5; color: white; }
+        tr:nth-child(even) { background: #F9FAFB; }
+      </style>
+    </head>
+    <body>
+      <h1>CIRCUMFERENCE OF A CIRCLE FORMULA</h1>
+      <h2>Complete Study Guide</h2>
+      
+      <h2>📐 The Three Main Formulas</h2>
+      <div class="formula">1. Using Radius: C = 2πr</div>
+      <div class="formula">2. Using Diameter: C = πd</div>
+      <div class="formula">3. Using Area: C = √(4πA)</div>
+      
+      <h2>📊 Quick Reference Chart</h2>
+      <table>
+        <tr><th>If You Know</th><th>Use Formula</th><th>Example</th></tr>
+        <tr><td>Radius (r)</td><td>C = 2πr</td><td>r = 5 → C = 31.42</td></tr>
+        <tr><td>Diameter (d)</td><td>C = πd</td><td>d = 10 → C = 31.42</td></tr>
+        <tr><td>Area (A)</td><td>C = √(4πA)</td><td>A = 78.5 → C = 31.42</td></tr>
+      </table>
+      
+      <h2>💡 Memory Tricks</h2>
+      <div class="tip">
+        • "2 Pirates Race" = 2πr<br>
+        • "Pie Diameter" = πd<br>
+        • Remember: Circumference is LINEAR (2πr), Area is SQUARED (πr²)
+      </div>
+      
+      <h2>📝 Practice Problems</h2>
+      <div class="example">
+        <strong>Easy:</strong><br>
+        1. Find C when r = 3 cm<br>
+        2. Find C when d = 8 cm<br>
+        3. Find C when r = 10 m<br>
+        <br>
+        <strong>Answers:</strong> 18.85 cm, 25.13 cm, 62.83 m
+      </div>
+      
+      <div class="example">
+        <strong>Medium:</strong><br>
+        1. Find C when A = 50 cm²<br>
+        2. Wheel with r = 35 cm, distance in one rotation?<br>
+        3. Track with C = 400 m, find diameter<br>
+        <br>
+        <strong>Answers:</strong> 25.07 cm, 219.91 cm, 127.32 m
+      </div>
+      
+      <h2>⚠️ Common Mistakes to Avoid</h2>
+      <ul>
+        <li>Confusing radius and diameter (remember: d = 2r)</li>
+        <li>Forgetting the "2" in 2πr</li>
+        <li>Using π = 3 instead of 3.14159</li>
+        <li>Mixing up area and circumference formulas</li>
+      </ul>
+      
+      <h2>📏 Unit Conversion Table</h2>
+      <table>
+        <tr><th>From</th><th>To</th><th>Multiply By</th></tr>
+        <tr><td>cm</td><td>m</td><td>0.01</td></tr>
+        <tr><td>m</td><td>km</td><td>0.001</td></tr>
+        <tr><td>inches</td><td>feet</td><td>0.0833</td></tr>
+        <tr><td>feet</td><td>yards</td><td>0.333</td></tr>
+      </table>
+      
+      <p style="margin-top: 40px; text-align: center; color: #6B7280;">
+        © 2025 CircumferenceOfACircleFormula.com - Free Educational Resource
+      </p>
+    </body>
+    </html>`;
     
-    const blob = new Blob([pdfContent], { type: 'text/plain' });
+    const blob = new Blob([htmlContent], { type: 'text/html' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'Circumference-Formula-Complete-Guide.txt';
+    a.download = 'Circumference-Formula-Complete-Guide.html';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -202,12 +268,13 @@ Formula 3: Using Area - C = √(4πA)
               <div className="mb-6">
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Enter Value:</label>
                 <input
-  type="number"
-  value={inputValue}
-  onChange={(e) => setInputValue(e.target.value)}
-  placeholder={`Enter ${inputType}...`}
-  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none text-lg placeholder-gray-700"  // Add placeholder-gray-700
-/>
+                  type="number"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder={`Enter ${inputType}...`}
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none text-lg placeholder-gray-700"
+                />
+              </div>
 
               <button
                 onClick={calculateCircumference}
@@ -223,20 +290,20 @@ Formula 3: Using Area - C = √(4πA)
                   <h3 className="text-xl font-bold text-gray-900 mb-4">Results</h3>
                   <div className="space-y-3">
                     <div className="bg-white rounded-lg p-4 border border-indigo-200">
-                      <div className="text-sm text-gray-600 mb-1">Circumference</div>
+                      <div className="text-sm text-gray-800 mb-1">Circumference</div>
                       <div className="text-3xl font-bold text-indigo-600">{result.circumference}</div>
                     </div>
                     <div className="grid grid-cols-3 gap-3">
                       <div className="bg-white rounded-lg p-3 border border-gray-200 text-center">
-                        <div className="text-xs text-gray-600 mb-1">Radius</div>
+                        <div className="text-xs text-gray-800 mb-1">Radius</div>
                         <div className="font-bold text-gray-900">{result.radius}</div>
                       </div>
                       <div className="bg-white rounded-lg p-3 border border-gray-200 text-center">
-                        <div className="text-xs text-gray-600 mb-1">Diameter</div>
+                        <div className="text-xs text-gray-800 mb-1">Diameter</div>
                         <div className="font-bold text-gray-900">{result.diameter}</div>
                       </div>
                       <div className="bg-white rounded-lg p-3 border border-gray-200 text-center">
-                        <div className="text-xs text-gray-600 mb-1">Area</div>
+                        <div className="text-xs text-gray-800 mb-1">Area</div>
                         <div className="font-bold text-gray-900">{result.area}</div>
                       </div>
                     </div>
@@ -245,12 +312,12 @@ Formula 3: Using Area - C = √(4πA)
                   <div className="mt-6 p-4 bg-white rounded-lg border border-gray-200">
                     <h4 className="font-bold text-gray-900 mb-3">Step-by-Step Solution:</h4>
                     <div className="space-y-2">
-  {result.steps.map((step, idx) => (
-    <div key={idx} className="flex items-start gap-2">
-      <span className="text-indigo-600 font-bold">{idx + 1}.</span>
-      <span className="text-gray-900">{step}</span>
-    </div>
-  ))}
+                      {result.steps.map((step, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <span className="text-indigo-600 font-bold">{idx + 1}.</span>
+                          <span className="text-gray-900">{step}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -395,21 +462,21 @@ Formula 3: Using Area - C = √(4πA)
           
           <div className="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              The circumference of a circle is the total distance around the circle's edge. Think of it as the perimeter of a circle—if you could unroll the circular boundary and lay it flat, the length of that line would be the circumference. This measurement is fundamental in geometry and has countless real-world applications, from calculating how far a wheel travels in one rotation to determining the amount of fencing needed for a circular garden.
+              The circumference of a circle is the total distance around the circle&apos;s edge. Think of it as the perimeter of a circle—if you could unroll the circular boundary and lay it flat, the length of that line would be the circumference. This measurement is fundamental in geometry and has countless real-world applications, from calculating how far a wheel travels in one rotation to determining the amount of fencing needed for a circular garden.
             </p>
             
             <p>
-              Unlike polygons where you add up the lengths of straight sides, a circle's circumference is calculated using a special mathematical relationship involving the circle's radius or diameter and the constant π (pi). This relationship is one of the most important discoveries in mathematics, dating back thousands of years to ancient civilizations who recognized that all circles, regardless of size, share the same proportional relationship between their circumference and diameter.
+              Unlike polygons where you add up the lengths of straight sides, a circle&apos;s circumference is calculated using a special mathematical relationship involving the circle&apos;s radius or diameter and the constant π (pi). This relationship is one of the most important discoveries in mathematics, dating back thousands of years to ancient civilizations who recognized that all circles, regardless of size, share the same proportional relationship between their circumference and diameter.
             </p>
 
             <p>
-              Understanding circumference is essential for students studying geometry, engineers designing circular components, architects planning curved structures, and anyone working with circular objects in everyday life. Whether you're calculating the length of a running track, the amount of trim needed for a circular window, or the distance Earth travels around the Sun, you're using the concept of circumference.
+              Understanding circumference is essential for students studying geometry, engineers designing circular components, architects planning curved structures, and anyone working with circular objects in everyday life. Whether you&apos;re calculating the length of a running track, the amount of trim needed for a circular window, or the distance Earth travels around the Sun, you&apos;re using the concept of circumference.
             </p>
 
             <div className="bg-indigo-50 border-l-4 border-indigo-600 p-6 my-6 rounded-r-lg">
               <p className="text-gray-800 font-semibold mb-2">💡 Etymology:</p>
               <p className="text-gray-700">
-                The word "circumference" comes from the Latin words "circum" (around) and "ferre" (to carry). It literally means "to carry around"—a perfect description of the distance around a circle!
+                The word &quot;circumference&quot; comes from the Latin words &quot;circum&quot; (around) and &quot;ferre&quot; (to carry). It literally means &quot;to carry around&quot;—a perfect description of the distance around a circle!
               </p>
             </div>
           </div>
@@ -421,7 +488,7 @@ Formula 3: Using Area - C = √(4πA)
           
           <div className="space-y-4 text-gray-700 leading-relaxed mb-6">
             <p>
-              Pi (π) is one of the most fascinating and important constants in mathematics. It represents the ratio of any circle's circumference to its diameter, and this ratio is always the same regardless of the circle's size—approximately 3.14159. Whether you're measuring a tiny coin or the enormous Earth, when you divide the circumference by the diameter, you always get π.
+              Pi (π) is one of the most fascinating and important constants in mathematics. It represents the ratio of any circle&apos;s circumference to its diameter, and this ratio is always the same regardless of the circle&apos;s size—approximately 3.14159. Whether you&apos;re measuring a tiny coin or the enormous Earth, when you divide the circumference by the diameter, you always get π.
             </p>
 
             <p>
@@ -429,7 +496,7 @@ Formula 3: Using Area - C = √(4πA)
             </p>
 
             <p>
-              For everyday calculations, you can use π ≈ 3.14, though using your calculator's π button provides much better accuracy. Some people remember π using the fraction 22/7, which gives approximately 3.142857—close but not exact. The precision you need depends on your application: building a house might require 3.14, while aerospace engineering might need dozens of decimal places.
+              For everyday calculations, you can use π ≈ 3.14, though using your calculator&apos;s π button provides much better accuracy. Some people remember π using the fraction 22/7, which gives approximately 3.142857—close but not exact. The precision you need depends on your application: building a house might require 3.14, while aerospace engineering might need dozens of decimal places.
             </p>
           </div>
 
@@ -447,7 +514,7 @@ Formula 3: Using Area - C = √(4πA)
             <div className="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-600">
               <h4 className="font-bold text-purple-900 mb-3">Why is π Irrational?</h4>
               <p className="text-sm text-gray-700">
-                Pi cannot be expressed as a simple fraction because it's irrational. This was proven by Johann Lambert in 1768. It's also transcendental, meaning it's not the root of any polynomial equation with rational coefficients—proven by Ferdinand von Lindemann in 1882.
+                Pi cannot be expressed as a simple fraction because it&apos;s irrational. This was proven by Johann Lambert in 1768. It&apos;s also transcendental, meaning it&apos;s not the root of any polynomial equation with rational coefficients—proven by Ferdinand von Lindemann in 1882.
               </p>
             </div>
           </div>
@@ -477,7 +544,7 @@ Formula 3: Using Area - C = √(4πA)
               },
               {
                 title: 'Example 2: From Diameter to Circumference',
-                problem: 'A circular table has a diameter of 1.5 meters. What\'s the distance around the edge?',
+                problem: 'A circular table has a diameter of 1.5 meters. What&apos;s the distance around the edge?',
                 steps: [
                   'Given: diameter = 1.5 m',
                   'Use formula: C = πd',
@@ -490,7 +557,7 @@ Formula 3: Using Area - C = √(4πA)
               },
               {
                 title: 'Example 3: From Area to Circumference',
-                problem: 'A circular pond has an area of 150 square meters. What\'s its circumference?',
+                problem: 'A circular pond has an area of 150 square meters. What&apos;s its circumference?',
                 steps: [
                   'Given: area = 150 m²',
                   'Use formula: C = √(4πA)',
@@ -503,7 +570,7 @@ Formula 3: Using Area - C = √(4πA)
               },
               {
                 title: 'Example 4: Working Backwards (Finding Diameter from Circumference)',
-                problem: 'A circular running track has a circumference of 400 meters. What\'s the diameter?',
+                problem: 'A circular running track has a circumference of 400 meters. What&apos;s the diameter?',
                 steps: [
                   'Given: C = 400 m',
                   'Start with: C = πd',
@@ -531,12 +598,12 @@ Formula 3: Using Area - C = √(4πA)
                 <p className="text-gray-700 font-semibold mb-4">{example.problem}</p>
                 <div className="bg-white rounded-lg p-4">
                   <div className="space-y-2">
-                  {example.steps.map((step, stepIdx) => (
-  <div key={stepIdx} className="flex gap-3">
-    <span className={`font-bold text-${example.color}-600`}>Step {stepIdx + 1}:</span>
-    <span className="text-gray-900">{step}</span>  {/* Change from text-gray-700 to text-gray-900 */}
-  </div>
-))}
+                    {example.steps.map((step, stepIdx) => (
+                      <div key={stepIdx} className="flex gap-3">
+                        <span className={`font-bold text-${example.color}-600`}>Step {stepIdx + 1}:</span>
+                        <span className="text-gray-900">{step}</span>
+                      </div>
+                    ))}
                   </div>
                   <div className={`mt-4 bg-${example.color}-50 p-3 rounded-lg border-l-4 border-${example.color}-600`}>
                     <span className="font-bold text-gray-900">Answer: </span>
@@ -556,7 +623,7 @@ Formula 3: Using Area - C = √(4πA)
           </div>
 
           <p className="text-gray-700 mb-6">
-            Understanding circumference isn't just academic—it's used every day in countless practical applications. Here are real-world scenarios where knowing how to calculate circumference is essential:
+            Understanding circumference isn&apos;t just academic—it&apos;s used every day in countless practical applications. Here are real-world scenarios where knowing how to calculate circumference is essential:
           </p>
           
           <div className="overflow-x-auto mb-8">
@@ -595,7 +662,7 @@ Formula 3: Using Area - C = √(4πA)
             {[
               { emoji: '🌍', title: 'Earth Navigation', desc: 'Critical for GPS systems and flight planning', calc: 'C ≈ 40,030 km' },
               { emoji: '🏃', title: 'Olympic Track', desc: 'Standard track with curved sections', calc: '≈ 400 meters total' },
-              { emoji: '🍕', title: 'Pizza Size', desc: 'Fun fact: 16" pizza > two 8" pizzas!', calc: '125.66 cm crust' },
+              { emoji: '🍕', title: 'Pizza Size', desc: 'Fun fact: 16&quot; pizza &gt; two 8&quot; pizzas!', calc: '125.66 cm crust' },
               { emoji: '🚗', title: 'Car Tire', desc: '830 rotations/min at highway speed', calc: '201 cm/rotation' },
               { emoji: '🎡', title: 'Ferris Wheel', desc: 'London Eye takes 30 min per rotation', calc: '377 m per ride' },
               { emoji: '🏗️', title: 'Architecture', desc: 'Always add 5-10% extra for fitting', calc: '31.42 m trim' }
@@ -624,7 +691,7 @@ Formula 3: Using Area - C = √(4πA)
           {!quizStarted ? (
             <div className="text-center py-8">
               <p className="text-lg text-gray-700 mb-6">
-                Ready to test what you've learned? Take our 10-question quiz and see how well you understand circumference formulas!
+                Ready to test what you&apos;ve learned? Take our 10-question quiz and see how well you understand circumference formulas!
               </p>
               <button
                 onClick={() => setQuizStarted(true)}
@@ -725,10 +792,10 @@ Formula 3: Using Area - C = √(4πA)
           <div className="grid md:grid-cols-2 gap-6">
             {[
               { num: 1, wrong: 'Confusing radius and diameter', fix: 'Remember d = 2r. Always double-check which measurement you have!' },
-              { num: 2, wrong: 'Forgetting the "2" in 2πr', fix: 'Think "2 pi r" as one unit. The 2 is essential—it accounts for the full diameter!' },
-              { num: 3, wrong: 'Using π = 3 instead of 3.14159', fix: 'Use calculator\'s π button for accuracy' },
+              { num: 2, wrong: 'Forgetting the &quot;2&quot; in 2πr', fix: 'Think &quot;2 pi r&quot; as one unit. The 2 is essential—it accounts for the full diameter!' },
+              { num: 3, wrong: 'Using π = 3 instead of 3.14159', fix: 'Use calculator&apos;s π button for accuracy' },
               { num: 4, wrong: 'Mixing up area (πr²) and circumference (2πr)', fix: 'Area is SQUARED (πr²), circumference is LINEAR (2πr)' },
-              { num: 5, wrong: 'Unit conversion errors', fix: 'Your answer\'s units should match your input units. Convert everything first!' },
+              { num: 5, wrong: 'Unit conversion errors', fix: 'Your answer&apos;s units should match your input units. Convert everything first!' },
               { num: 6, wrong: 'Rounding too early in calculation', fix: 'Use full π value throughout calculation, round only the final answer' }
             ].map((mistake, idx) => (
               <div key={idx} className="bg-red-50 rounded-lg p-6 border-2 border-red-200">
@@ -749,7 +816,7 @@ Formula 3: Using Area - C = √(4πA)
             <h3 className="font-bold text-indigo-900 mb-3">✓ Quick Checklist Before Submitting Your Answer</h3>
             <ul className="space-y-2 text-gray-700">
               <li>□ Did I use the correct formula for what I have (radius, diameter, or area)?</li>
-              <li>□ Did I include the "2" in the 2πr formula?</li>
+              <li>□ Did I include the &quot;2&quot; in the 2πr formula?</li>
               <li>□ Did I use the π button on my calculator (or at least 3.14159)?</li>
               <li>□ Are my units consistent throughout the problem?</li>
               <li>□ Does my answer make logical sense? (Is it positive? Reasonable size?)</li>
@@ -766,31 +833,31 @@ Formula 3: Using Area - C = √(4πA)
             {[
               {
                 q: "What is the circumference of a circle formula?",
-                a: "There are three main formulas depending on what you know: C = 2πr (using radius), C = πd (using diameter), and C = √(4πA) (using area). The most commonly used formula is C = 2πr because the radius is the fundamental measurement of a circle. All three formulas will give you the same result—they're just different ways of expressing the same mathematical relationship."
+                a: "There are three main formulas depending on what you know: C = 2πr (using radius), C = πd (using diameter), and C = √(4πA) (using area). The most commonly used formula is C = 2πr because the radius is the fundamental measurement of a circle. All three formulas will give you the same result—they&apos;re just different ways of expressing the same mathematical relationship."
               },
               {
                 q: "How do you find circumference with diameter?",
                 a: "Use the formula C = πd. Simply multiply the diameter by pi (approximately 3.14159). For example, if the diameter is 10 cm, then C = π × 10 ≈ 31.42 cm. This is actually the simplest formula because it comes directly from the definition of π, which is the ratio of circumference to diameter."
               },
               {
-                q: "What's the difference between circumference and perimeter?",
-                a: "Circumference and perimeter both measure the distance around a shape, but 'circumference' is used specifically for circles and curved shapes, while 'perimeter' is used for polygons (shapes with straight sides). The concepts are the same—total distance around the outside—but the terminology differs based on the shape type."
+                q: "What&apos;s the difference between circumference and perimeter?",
+                a: "Circumference and perimeter both measure the distance around a shape, but &apos;circumference&apos; is used specifically for circles and curved shapes, while &apos;perimeter&apos; is used for polygons (shapes with straight sides). The concepts are the same—total distance around the outside—but the terminology differs based on the shape type."
               },
               {
                 q: "Why do we use π (pi) in the circumference formula?",
-                a: "Pi (π) represents the constant ratio between any circle's circumference and its diameter. No matter how big or small the circle, when you divide its circumference by its diameter, you always get approximately 3.14159. This amazing constant relationship makes π fundamental to all circle calculations. It was discovered thousands of years ago and has been studied extensively throughout mathematical history."
+                a: "Pi (π) represents the constant ratio between any circle&apos;s circumference and its diameter. No matter how big or small the circle, when you divide its circumference by its diameter, you always get approximately 3.14159. This amazing constant relationship makes π fundamental to all circle calculations. It was discovered thousands of years ago and has been studied extensively throughout mathematical history."
               },
               {
                 q: "Can you calculate circumference without knowing radius or diameter?",
-                a: "Yes! If you know the area of the circle, you can use the formula C = √(4πA). Alternatively, if you have a physical circle, you can measure the circumference directly by wrapping a string around it and then measuring the string's length. You can also derive the radius or diameter from other circle properties like chord lengths or arc measurements."
+                a: "Yes! If you know the area of the circle, you can use the formula C = √(4πA). Alternatively, if you have a physical circle, you can measure the circumference directly by wrapping a string around it and then measuring the string&apos;s length. You can also derive the radius or diameter from other circle properties like chord lengths or arc measurements."
               },
               {
                 q: "How accurate is using 3.14 instead of the full value of π?",
-                a: "Using π = 3.14 gives you results accurate to about 0.05%, which is fine for most everyday calculations like homework problems or basic measurements. However, for scientific work, engineering, or any high-precision application, you should use your calculator's π button which typically stores π to 10-12 decimal places. The difference might seem small, but it can add up in large-scale projects."
+                a: "Using π = 3.14 gives you results accurate to about 0.05%, which is fine for most everyday calculations like homework problems or basic measurements. However, for scientific work, engineering, or any high-precision application, you should use your calculator&apos;s π button which typically stores π to 10-12 decimal places. The difference might seem small, but it can add up in large-scale projects."
               },
               {
-                q: "What's the circumference of Earth?",
-                a: "Earth's equatorial diameter is approximately 12,742 km, so using the formula C = πd, the circumference is about 40,030 km (or about 24,874 miles). This measurement was remarkably first calculated by the Greek mathematician Eratosthenes around 240 BCE using shadows and geometry—he was accurate to within 2% of the modern measurement!"
+                q: "What&apos;s the circumference of Earth?",
+                a: "Earth&apos;s equatorial diameter is approximately 12,742 km, so using the formula C = πd, the circumference is about 40,030 km (or about 24,874 miles). This measurement was remarkably first calculated by the Greek mathematician Eratosthenes around 240 BCE using shadows and geometry—he was accurate to within 2% of the modern measurement!"
               },
               {
                 q: "How do I convert between radius and diameter?",
@@ -802,15 +869,15 @@ Formula 3: Using Area - C = √(4πA)
               },
               {
                 q: "Why is circumference important in real life?",
-                a: "Circumference calculations are essential in countless real-world applications: determining how far a wheel travels per rotation (automotive and cycling), calculating the amount of materials needed for circular construction projects (fencing, trim, piping), understanding planetary orbits and Earth's dimensions (astronomy and navigation), designing circular mechanical parts (engineering), and much more. Any time you work with anything circular, you're likely using circumference."
+                a: "Circumference calculations are essential in countless real-world applications: determining how far a wheel travels per rotation (automotive and cycling), calculating the amount of materials needed for circular construction projects (fencing, trim, piping), understanding planetary orbits and Earth&apos;s dimensions (astronomy and navigation), designing circular mechanical parts (engineering), and much more. Any time you work with anything circular, you&apos;re likely using circumference."
               },
               {
-                q: "What's the relationship between circumference and area?",
-                a: "Both use π and the radius, but differently. Circumference (C = 2πr) is a linear measurement that grows proportionally with the radius, while area (A = πr²) is a squared measurement that grows with the square of the radius. This means if you double the radius, the circumference doubles, but the area quadruples! They're related by the formula C = 2√(πA)."
+                q: "What&apos;s the relationship between circumference and area?",
+                a: "Both use π and the radius, but differently. Circumference (C = 2πr) is a linear measurement that grows proportionally with the radius, while area (A = πr²) is a squared measurement that grows with the square of the radius. This means if you double the radius, the circumference doubles, but the area quadruples! They&apos;re related by the formula C = 2√(πA)."
               },
               {
                 q: "Can I use these formulas for ovals or ellipses?",
-                a: "No, these formulas only work for perfect circles. Ellipses (ovals) have a more complex formula involving both the major and minor axes, and there's actually no simple exact formula using only elementary functions. For ellipses, you typically need approximation formulas or numerical integration methods to calculate the perimeter accurately."
+                a: "No, these formulas only work for perfect circles. Ellipses (ovals) have a more complex formula involving both the major and minor axes, and there&apos;s actually no simple exact formula using only elementary functions. For ellipses, you typically need approximation formulas or numerical integration methods to calculate the perimeter accurately."
               }
             ].map((faq, idx) => (
               <div key={idx} className="border-l-4 border-indigo-600 bg-indigo-50 p-6 rounded-r-lg">
@@ -832,9 +899,9 @@ Formula 3: Using Area - C = √(4πA)
             <div className="border-l-4 border-blue-600 bg-blue-50 p-6 rounded-r-lg">
               <h3 className="text-xl font-bold text-blue-900 mb-4">🧠 Remember the Formulas</h3>
               <ul className="space-y-3 text-gray-700">
-                <li><strong>"2 Pirates Race"</strong> = 2πr (circumference with radius)</li>
-                <li><strong>"Pie Diameter"</strong> = πd (circumference with diameter)</li>
-                <li><strong>"Circle around 2 times pi"</strong> = Going around requires 2π × radius</li>
+                <li><strong>&quot;2 Pirates Race&quot;</strong> = 2πr (circumference with radius)</li>
+                <li><strong>&quot;Pie Diameter&quot;</strong> = πd (circumference with diameter)</li>
+                <li><strong>&quot;Circle around 2 times pi&quot;</strong> = Going around requires 2π × radius</li>
                 <li><strong>Area is SQUARE:</strong> πr² has the little 2 up high</li>
                 <li><strong>Circumference is LINEAR:</strong> 2πr has the 2 in front</li>
               </ul>
@@ -847,7 +914,8 @@ Formula 3: Using Area - C = √(4πA)
                 <li><strong>Better estimate:</strong> Use π ≈ 3.14 for decent accuracy</li>
                 <li><strong>Sanity check:</strong> Circumference should be about 6.28 times the radius</li>
                 <li><strong>Quick conversion:</strong> If you have diameter, just multiply by 3 for a rough answer</li>
-                <li><strong>Double-check:</strong> C should always be larger than d (since π &gt; 1)</li>              </ul>
+                <li><strong>Double-check:</strong> C should always be larger than d (since π &gt; 1)</li>
+              </ul>
             </div>
 
             <div className="border-l-4 border-green-600 bg-green-50 p-6 rounded-r-lg">
@@ -906,8 +974,8 @@ Formula 3: Using Area - C = √(4πA)
                 <li>Find circumference when area = 50 cm²</li>
                 <li>A wheel has radius 35 cm. How far does it travel in one rotation?</li>
                 <li>Find circumference when diameter = 15.5 meters</li>
-                <li>A circular track has circumference 400 m. What's the diameter?</li>
-                <li>If radius = 8 feet, what's the circumference?</li>
+                <li>A circular track has circumference 400 m. What&apos;s the diameter?</li>
+                <li>If radius = 8 feet, what&apos;s the circumference?</li>
               </ol>
               <details className="bg-white p-4 rounded-lg">
                 <summary className="font-bold text-blue-700 cursor-pointer">Show Answers</summary>
@@ -924,11 +992,11 @@ Formula 3: Using Area - C = √(4πA)
             <div className="border-l-4 border-purple-600 bg-purple-50 p-6 rounded-r-lg">
               <h3 className="text-xl font-bold text-purple-900 mb-4">Hard Level</h3>
               <ol className="space-y-2 text-gray-700 list-decimal list-inside mb-4" start={11}>
-                <li>A circle's area is 314 cm². Find the circumference.</li>
+                <li>A circle&apos;s area is 314 cm². Find the circumference.</li>
                 <li>A circle has circumference 100 cm. Find the radius and area.</li>
                 <li>A car tire with radius 30 cm makes 1000 rotations. What distance is traveled?</li>
                 <li>Two circles: one has r = 5 cm, other has d = 12 cm. Which has larger circumference?</li>
-                <li>A running track is circular with C = 500 m. What's the area enclosed?</li>
+                <li>A running track is circular with C = 500 m. What&apos;s the area enclosed?</li>
               </ol>
               <details className="bg-white p-4 rounded-lg">
                 <summary className="font-bold text-purple-700 cursor-pointer">Show Answers</summary>
@@ -961,7 +1029,7 @@ Formula 3: Using Area - C = √(4πA)
             </p>
 
             <p>
-              The symbol π wasn't introduced until much later. Welsh mathematician William Jones first used it in 1706, and the famous mathematician Leonhard Euler popularized it in the 1730s. The letter π was chosen because it's the first letter of the Greek word "perimetros," meaning perimeter.
+              The symbol π wasn&apos;t introduced until much later. Welsh mathematician William Jones first used it in 1706, and the famous mathematician Leonhard Euler popularized it in the 1730s. The letter π was chosen because it&apos;s the first letter of the Greek word &quot;perimetros,&quot; meaning perimeter.
             </p>
 
             <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600 my-6">
