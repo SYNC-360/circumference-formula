@@ -1,20 +1,28 @@
 "use client"
 
 import React, { useState } from 'react';
-import { Calculator, CheckCircle, XCircle, Download, Lightbulb, Award, BookOpen, Target, AlertCircle, Brain, History } from 'lucide-react';
+import { Calculator, CheckCircle, XCircle, Download, Lightbulb, Award, Target, AlertCircle, Brain, History } from 'lucide-react';
+
+// ADD THIS TYPE DEFINITION
+type CalculationResult = {
+  circumference: string;
+  radius: string;
+  diameter: string;
+  area: string;
+  steps: string[];
+};
 
 export default function CircumferenceFormulaPage() {
   const [inputType, setInputType] = useState('radius');
   const [inputValue, setInputValue] = useState('');
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState<CalculationResult | null>(null);  // UPDATE THIS LINE
   
   // Quiz state
   const [quizStarted, setQuizStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);  // ALREADY TYPED
   const quizQuestions = [
     { question: "What is the formula for circumference using radius?", options: ["C = πr", "C = 2πr", "C = πr²", "C = 2r"], correct: 1 },
     { question: "If a circle has a diameter of 10 cm, what is its circumference? (use π ≈ 3.14)", options: ["31.4 cm", "62.8 cm", "15.7 cm", "20 cm"], correct: 0 },
