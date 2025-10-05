@@ -272,7 +272,7 @@ export default function CircumferenceFormulaPage() {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder={`Enter ${inputType}...`}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none text-lg placeholder-gray-700"
+                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none text-lg text-gray-900 placeholder-gray-500 font-medium"
                 />
               </div>
 
