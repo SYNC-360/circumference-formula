@@ -528,90 +528,167 @@ export default function CircumferenceFormulaPage() {
           </div>
           
           <div className="space-y-6">
-            {[
-              {
-                title: 'Example 1: From Radius to Circumference',
-                problem: 'A circular garden has a radius of 8 meters. How much fencing is needed to go around it?',
-                steps: [
-                  'Identify what you have: radius = 8 m',
-                  'Choose the appropriate formula: C = 2πr',
-                  'Substitute the value: C = 2 × π × 8',
-                  'Calculate: C = 2 × 3.14159 × 8',
-                  'Simplify: C = 50.27 meters'
-                ],
-                answer: 'You need 50.27 meters of fencing',
-                color: 'blue'
-              },
-              {
-                title: 'Example 2: From Diameter to Circumference',
-                problem: 'A circular table has a diameter of 1.5 meters. What&apos;s the distance around the edge?',
-                steps: [
-                  'Given: diameter = 1.5 m',
-                  'Use formula: C = πd',
-                  'Substitute: C = π × 1.5',
-                  'Calculate: C = 3.14159 × 1.5',
-                  'Result: C = 4.71 meters'
-                ],
-                answer: 'The circumference is 4.71 meters',
-                color: 'purple'
-              },
-              {
-                title: 'Example 3: From Area to Circumference',
-                problem: 'A circular pond has an area of 150 square meters. What&apos;s its circumference?',
-                steps: [
-                  'Given: area = 150 m²',
-                  'Use formula: C = √(4πA)',
-                  'Substitute: C = √(4 × π × 150)',
-                  'Calculate inside: C = √(1884.96)',
-                  'Take square root: C = 43.42 meters'
-                ],
-                answer: 'The circumference is 43.42 meters',
-                color: 'orange'
-              },
-              {
-                title: 'Example 4: Working Backwards (Finding Diameter from Circumference)',
-                problem: 'A circular running track has a circumference of 400 meters. What&apos;s the diameter?',
-                steps: [
-                  'Given: C = 400 m',
-                  'Start with: C = πd',
-                  'Rearrange: d = C/π',
-                  'Substitute: d = 400/π',
-                  'Calculate: d = 400/3.14159 = 127.32 meters'
-                ],
-                answer: 'The diameter is 127.32 meters',
-                color: 'green'
-              },
-              {
-                title: 'Example 5: Unit Conversion Problem',
-                problem: 'A bicycle wheel has a radius of 35 cm. How many meters does the bike travel in 100 wheel rotations?',
-                steps: [
-                  'Find circumference: C = 2πr = 2 × π × 35 = 219.91 cm',
-                  'Distance for 100 rotations: 100 × 219.91 = 21,991 cm',
-                  'Convert to meters: 21,991 cm ÷ 100 = 219.91 m'
-                ],
-                answer: 'The bike travels 219.91 meters (almost 220 m)',
-                color: 'pink'
-              }
-            ].map((example, idx) => (
-              <div key={idx} className={`border-l-4 border-${example.color}-600 bg-${example.color}-50 p-6 rounded-r-lg`}>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{example.title}</h3>
-                <p className="text-gray-700 font-semibold mb-4">{example.problem}</p>
-                <div className="bg-white rounded-lg p-4">
-                  <div className="space-y-2">
-                    {example.steps.map((step, stepIdx) => (
-                      <div key={stepIdx} className="flex gap-3">
-                        <span className={`font-bold text-${example.color}-600`}>Step {stepIdx + 1}:</span>
-                        <span className="text-gray-900">{step}</span>
-                      </div>
-                    ))}
+            {/* Example 1 */}
+            <div className="border-l-4 border-blue-600 bg-blue-50 p-6 rounded-r-lg">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Example 1: From Radius to Circumference</h3>
+              <p className="text-gray-700 font-semibold mb-4">A circular garden has a radius of 8 meters. How much fencing is needed to go around it?</p>
+              <div className="bg-white rounded-lg p-4">
+                <div className="space-y-2">
+                  <div className="flex gap-3">
+                    <span className="font-bold text-blue-600">Step 1:</span>
+                    <span className="text-gray-900 font-medium">Identify what you have: radius = 8 m</span>
                   </div>
-                  <div className={`mt-4 bg-${example.color}-50 p-3 rounded-lg border-l-4 border-${example.color}-600`}>
-                    <span className="font-bold text-gray-900">Answer: </span>
-                    <span className={`text-${example.color}-700 font-semibold`}>{example.answer}</span>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-blue-600">Step 2:</span>
+                    <span className="text-gray-900 font-medium">Choose the appropriate formula: C = 2πr</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-blue-600">Step 3:</span>
+                    <span className="text-gray-900 font-medium">Substitute the value: C = 2 × π × 8</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-blue-600">Step 4:</span>
+                    <span className="text-gray-900 font-medium">Calculate: C = 2 × 3.14159 × 8</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-blue-600">Step 5:</span>
+                    <span className="text-gray-900 font-medium">Simplify: C = 50.27 meters</span>
                   </div>
                 </div>
+                <div className="mt-4 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-600">
+                  <span className="font-bold text-gray-900">Answer: </span>
+                  <span className="text-blue-700 font-semibold">You need 50.27 meters of fencing</span>
+                </div>
               </div>
-            ))}
+            </div>
+
+            {/* Example 2 */}
+            <div className="border-l-4 border-purple-600 bg-purple-50 p-6 rounded-r-lg">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Example 2: From Diameter to Circumference</h3>
+              <p className="text-gray-700 font-semibold mb-4">A circular table has a diameter of 1.5 meters. What&apos;s the distance around the edge?</p>
+              <div className="bg-white rounded-lg p-4">
+                <div className="space-y-2">
+                  <div className="flex gap-3">
+                    <span className="font-bold text-purple-600">Step 1:</span>
+                    <span className="text-gray-900 font-medium">Given: diameter = 1.5 m</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-purple-600">Step 2:</span>
+                    <span className="text-gray-900 font-medium">Use formula: C = πd</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-purple-600">Step 3:</span>
+                    <span className="text-gray-900 font-medium">Substitute: C = π × 1.5</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-purple-600">Step 4:</span>
+                    <span className="text-gray-900 font-medium">Calculate: C = 3.14159 × 1.5</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-purple-600">Step 5:</span>
+                    <span className="text-gray-900 font-medium">Result: C = 4.71 meters</span>
+                  </div>
+                </div>
+                <div className="mt-4 bg-purple-50 p-3 rounded-lg border-l-4 border-purple-600">
+                  <span className="font-bold text-gray-900">Answer: </span>
+                  <span className="text-purple-700 font-semibold">The circumference is 4.71 meters</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Example 3 */}
+            <div className="border-l-4 border-orange-600 bg-orange-50 p-6 rounded-r-lg">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Example 3: From Area to Circumference</h3>
+              <p className="text-gray-700 font-semibold mb-4">A circular pond has an area of 150 square meters. What&apos;s its circumference?</p>
+              <div className="bg-white rounded-lg p-4">
+                <div className="space-y-2">
+                  <div className="flex gap-3">
+                    <span className="font-bold text-orange-600">Step 1:</span>
+                    <span className="text-gray-900 font-medium">Given: area = 150 m²</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-orange-600">Step 2:</span>
+                    <span className="text-gray-900 font-medium">Use formula: C = √(4πA)</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-orange-600">Step 3:</span>
+                    <span className="text-gray-900 font-medium">Substitute: C = √(4 × π × 150)</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-orange-600">Step 4:</span>
+                    <span className="text-gray-900 font-medium">Calculate inside: C = √(1884.96)</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-orange-600">Step 5:</span>
+                    <span className="text-gray-900 font-medium">Take square root: C = 43.42 meters</span>
+                  </div>
+                </div>
+                <div className="mt-4 bg-orange-50 p-3 rounded-lg border-l-4 border-orange-600">
+                  <span className="font-bold text-gray-900">Answer: </span>
+                  <span className="text-orange-700 font-semibold">The circumference is 43.42 meters</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Example 4 */}
+            <div className="border-l-4 border-green-600 bg-green-50 p-6 rounded-r-lg">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Example 4: Working Backwards (Finding Diameter from Circumference)</h3>
+              <p className="text-gray-700 font-semibold mb-4">A circular running track has a circumference of 400 meters. What&apos;s the diameter?</p>
+              <div className="bg-white rounded-lg p-4">
+                <div className="space-y-2">
+                  <div className="flex gap-3">
+                    <span className="font-bold text-green-600">Step 1:</span>
+                    <span className="text-gray-900 font-medium">Given: C = 400 m</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-green-600">Step 2:</span>
+                    <span className="text-gray-900 font-medium">Start with: C = πd</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-green-600">Step 3:</span>
+                    <span className="text-gray-900 font-medium">Rearrange: d = C/π</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-green-600">Step 4:</span>
+                    <span className="text-gray-900 font-medium">Substitute: d = 400/π</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-green-600">Step 5:</span>
+                    <span className="text-gray-900 font-medium">Calculate: d = 400/3.14159 = 127.32 meters</span>
+                  </div>
+                </div>
+                <div className="mt-4 bg-green-50 p-3 rounded-lg border-l-4 border-green-600">
+                  <span className="font-bold text-gray-900">Answer: </span>
+                  <span className="text-green-700 font-semibold">The diameter is 127.32 meters</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Example 5 */}
+            <div className="border-l-4 border-pink-600 bg-pink-50 p-6 rounded-r-lg">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Example 5: Unit Conversion Problem</h3>
+              <p className="text-gray-700 font-semibold mb-4">A bicycle wheel has a radius of 35 cm. How many meters does the bike travel in 100 wheel rotations?</p>
+              <div className="bg-white rounded-lg p-4">
+                <div className="space-y-2">
+                  <div className="flex gap-3">
+                    <span className="font-bold text-pink-600">Step 1:</span>
+                    <span className="text-gray-900 font-medium">Find circumference: C = 2πr = 2 × π × 35 = 219.91 cm</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-pink-600">Step 2:</span>
+                    <span className="text-gray-900 font-medium">Distance for 100 rotations: 100 × 219.91 = 21,991 cm</span>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="font-bold text-pink-600">Step 3:</span>
+                    <span className="text-gray-900 font-medium">Convert to meters: 21,991 cm ÷ 100 = 219.91 m</span>
+                  </div>
+                </div>
+                <div className="mt-4 bg-pink-50 p-3 rounded-lg border-l-4 border-pink-600">
+                  <span className="font-bold text-gray-900">Answer: </span>
+                  <span className="text-pink-700 font-semibold">The bike travels 219.91 meters (almost 220 m)</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
