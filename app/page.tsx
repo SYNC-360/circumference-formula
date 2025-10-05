@@ -21,7 +21,7 @@ export default function CircumferenceFormulaPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
 
   const quizQuestions = [
     { question: "What is the formula for circumference using radius?", options: ["C = πr", "C = 2πr", "C = πr²", "C = 2r"], correct: 1 },
